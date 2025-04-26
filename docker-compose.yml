@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  python_env:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./user_code:/app/user_code:ro
+      - ./output:/app/output
+    environment:
+      - FLASK_ENV=development
+      - MAX_EXECUTION_TIME=30
+      - MAX_MEMORY_MB=500
+    restart: unless-stopped 
